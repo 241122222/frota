@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d4f7c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Frota">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Frota · Abastecimento</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root { --bg:#eef2f6; --ink:#16202c; --mut:#5b6878; --pri:#1d4f7c; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0e1319; --ink:#e7edf3; --mut:#95a3b2; --pri:#5d9ad3; } }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--ink);
+    font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
+  iframe { position:fixed; inset:0; width:100%; height:100%; border:0; display:block;
+    padding-top:env(safe-area-inset-top); box-sizing:border-box; background:var(--bg); }
+  #load { position:fixed; inset:0; display:grid; place-items:center; text-align:center; color:var(--mut); z-index:1; }
+  #load img { width:72px; height:72px; border-radius:18px; display:block; margin:0 auto 14px; }
+  .spin { width:28px; height:28px; border:3px solid rgba(127,127,127,.25); border-top-color:var(--pri);
+    border-radius:50%; animation:sp 1s linear infinite; margin:14px auto 0; }
+  @keyframes sp { to { transform:rotate(360deg); } }
+  #off { display:none; position:fixed; inset:0; z-index:2; background:var(--bg); place-items:center; text-align:center; padding:24px; }
+  #off button { margin-top:16px; border:0; border-radius:12px; padding:14px 22px; font-size:16px; font-weight:700;
+    background:var(--pri); color:#fff; }
+</style>
+</head>
+<body>
+<div id="load"><div><img src="icon-192.png" alt=""><b style="color:var(--ink)">Frota</b><div class="spin"></div></div></div>
+<div id="off"><div><img src="icon-192.png" alt="" style="width:64px;border-radius:16px"><h2 style="margin:12px 0 6px">Sem internet</h2>
+  <div style="color:var(--mut)">O app precisa de conexão para lançar o abastecimento.</div>
+  <button onclick="location.reload()">Tentar de novo</button></div></div>
+<iframe id="app" title="Frota" allow="clipboard-write"
+  src="https://script.google.com/macros/s/AKfycbxjYYnpld1hKXFT22v_sYu3z6Oub6Rm8u4I8aAImHp6LGIwvXftCWHNfLMO-PFXZv5YmA/exec"></iframe>
+<script>
+  const f = document.getElementById('app'), l = document.getElementById('load'), o = document.getElementById('off');
+  f.addEventListener('load', () => { l.style.display = 'none'; });
+  function checa() { o.style.display = navigator.onLine ? 'none' : 'grid'; }
+  addEventListener('online', () => location.reload());
+  addEventListener('offline', checa); checa();
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
