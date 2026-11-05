@@ -1,6 +1,6 @@
 // Guarda só a "casca" do app (tela, ícones). Os dados sempre vêm da internet.
-const CACHE = 'frota-v1';
-const ARQS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const CACHE = 'frota-v2';
+const ARQS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './logo-web.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARQS)).then(() => self.skipWaiting()));

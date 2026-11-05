@@ -3,24 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#1d4f7c">
+<meta name="theme-color" content="#eb1c24">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Frota">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Frota · Abastecimento</title>
+<title>Frota · Kikoxinha</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
-  :root { --bg:#eef2f6; --ink:#16202c; --mut:#5b6878; --pri:#1d4f7c; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0e1319; --ink:#e7edf3; --mut:#95a3b2; --pri:#5d9ad3; } }
+  :root { --bg:#f6f3ef; --ink:#1b1d3a; --mut:#5f6278; --pri:#d91a22; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121224; --ink:#eceaf4; --mut:#a3a3bd; --pri:#ff4d53; } }
   html, body { margin:0; height:100%; background:var(--bg); color:var(--ink);
     font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; }
   iframe { position:fixed; inset:0; width:100%; height:100%; border:0; display:block;
     padding-top:env(safe-area-inset-top); box-sizing:border-box; background:var(--bg); }
   #load { position:fixed; inset:0; display:grid; place-items:center; text-align:center; color:var(--mut); z-index:1; }
-  #load img { width:72px; height:72px; border-radius:18px; display:block; margin:0 auto 14px; }
+  #load .lg { background:#fff; border-radius:20px; padding:16px 20px; border-bottom:5px solid var(--pri); margin:0 auto 6px; width:min(300px,80vw); }
+  #load .lg img { width:100%; display:block; }
   .spin { width:28px; height:28px; border:3px solid rgba(127,127,127,.25); border-top-color:var(--pri);
     border-radius:50%; animation:sp 1s linear infinite; margin:14px auto 0; }
   @keyframes sp { to { transform:rotate(360deg); } }
@@ -30,7 +31,7 @@
 </style>
 </head>
 <body>
-<div id="load"><div><img src="icon-192.png" alt=""><b style="color:var(--ink)">Frota</b><div class="spin"></div></div></div>
+<div id="load"><div><div class="lg"><img src="logo-web.png" alt="Kikoxinha"></div><b style="color:var(--ink)">Frota</b><div class="spin"></div></div></div>
 <div id="off"><div><img src="icon-192.png" alt="" style="width:64px;border-radius:16px"><h2 style="margin:12px 0 6px">Sem internet</h2>
   <div style="color:var(--mut)">O app precisa de conexão para lançar o abastecimento.</div>
   <button onclick="location.reload()">Tentar de novo</button></div></div>
